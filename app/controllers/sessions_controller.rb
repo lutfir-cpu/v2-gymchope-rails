@@ -1,10 +1,23 @@
 class SessionsController < ApplicationController
   include CurrentUserConcern
+
+  def index
+    if @current_user
+      render json: {
+        user: @current_user
+      }
+    else
+      render json: {
+        errors: ['No current user'],
+        session: session
+      }
+    end
+  end
   
   def create
     user = User
       .find_by(email: params["user"]["email"])
-      .try(:authenticate, params["user"]["email"])
+      .try(:authenticate, params["user"]["password"])
     
     if user
       session[:user_id] = user.id

@@ -1,0 +1,75 @@
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.dashboard-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.dashboard-header h1 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.header-icons .icon {
+    font-size: 1.5rem;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+.notifications-section {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.notifications-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.features-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.feature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 150px;
+    margin: 10px;
+    text-align: center;
+    text-decoration: none; /* Removes underline - pretty cool ngl */
+    color: inherit; /* Inherit colour from parent */
+    transition: transform 0.3s;
+}
+
+.feature:hover {
+    transform: scale(1.05); /* Slightly enlarge when hovering over the element */
+}
+
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.feature p {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.feature span {
+    font-size: 0.9rem;
+    color: #555;
+}

@@ -3,9 +3,11 @@ import { useState } from "react";
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Home from "./components/Home";
+import Testing from "./components/Testing";
 import './App.css';
 import PrivateRoutes from "./components/PrivateRoutes";
 import axios from "axios";
+import { Navigate } from "react-router-dom";
 
 function App() {
 
@@ -33,6 +35,7 @@ function App() {
         console.log("check login error", e)
       });
   }
+  console.log(loggedInStatus);
 
   return (
     <Router>
@@ -47,13 +50,20 @@ function App() {
             <Signup/>
           } />
 
-          <Route path="/home-page" element={
+          <Route path="/homepage" element={
             <Home 
               status={loggedInStatus}
               checkStatus={checkLoginStatus} 
               user={user}
             />
           } />
+
+          <Route path="testing" element={
+            <PrivateRoutes checkStatus={checkLoginStatus} status={loggedInStatus}>
+              <Testing/>
+            </PrivateRoutes>
+          } />
+          
         </Routes>
       </div>
     </Router>

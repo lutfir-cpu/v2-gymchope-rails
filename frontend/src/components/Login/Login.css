@@ -1,0 +1,244 @@
+/*
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.title-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center; !* Center the icon horizontally *!
+    margin-bottom: 10px;
+}
+
+.user-icon {
+    font-size: 165px; !* Adjust the size as needed 165 - 200 works best*!
+}
+
+.titleContainer {
+    margin-bottom: 20px;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.input-container {
+    margin-bottom: 15px;
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-container-medium {
+    margin-bottom: 15px;
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-box {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.input-box:focus {
+    outline: none;
+    border-color: #060606;
+}
+
+.inputButton {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    color: white;
+    background-color: #060606;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.inputButton:hover {
+    background-color: #0056b3;
+}
+
+.inputButton:active {
+    background-color: #004085;
+}
+
+.inputButton {
+    padding: 10px;
+    font-size: 1rem;
+    color: white;
+    background-color: #060606;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.inputButtonForgot {
+    padding: 5px;
+    font-size: 0.9rem;
+    color: black;
+    background-color: #d3d3d3;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: center;
+}
+
+.inputButtonForgot:hover {
+    background-color: #b0b0b0;
+}
+
+.inputButtonForgot:active {
+    background-color: #808080;
+}
+
+.inputButton:hover {
+    background-color: #0056b3;
+}
+
+.inputButton:active {
+    background-color: #004085;
+}
+
+.validation-msg {
+    color: red;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}*/
+
+/*
+Above is the old css styling used for reference
+ */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Main container styling */
+.mainContainer {
+    width: 100%;
+    max-width: 400px;
+    padding: 40px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Icon and title styling */
+.title-icon {
+    margin-bottom: 20px;
+}
+
+.user-icon {
+    font-size: 120px; /* Adjusts the size of the user icon */
+}
+
+.titleContainer {
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Input container styles */
+.input-container {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 15px;
+}
+
+.input-box {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.input-box:focus {
+    outline: none;
+    border-color: #060606;
+}
+
+/* Button styling for login and create account */
+.inputButton {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    color: white;
+    background-color: #060606;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.inputButton:hover {
+    background-color: #0056b3; /* Hover state background color */
+}
+
+.inputButton:active {
+    background-color: #004085; /* Active state background color */
+}
+
+/* Additional styles for the forgot password button */
+.inputButtonForgot {
+    padding: 5px;
+    font-size: 0.9rem;
+    color: black;
+    background-color: #d3d3d3;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.inputButtonForgot:hover {
+    background-color: #b0b0b0;
+}
+
+.inputButtonForgot:active {
+    background-color: #808080;
+}
+
+/* Error message styling */
+.validation-msg {
+    color: red;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+/* Styling for section offering account creation */
+.create-option {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9rem;
+}

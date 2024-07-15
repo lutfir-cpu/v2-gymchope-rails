@@ -1,9 +1,9 @@
 import { BrowserRouter as Router, Route, Routes, redirect } from "react-router-dom";
 import { useState } from "react";
-import Login from './components/Login';
+import Login from './components/Login/Login.jsx';
 import Signup from './components/Signup';
-import Home from "./components/Home";
-import './App.css';
+import Home from "./components/Home/Home.jsx";
+//import './App.css';
 import PrivateRoutes from "./components/PrivateRoutes";
 import axios from "axios";
 
@@ -37,7 +37,6 @@ function App() {
   return (
     <Router>
       <div className="app">
-        <h1>GymChope</h1>
         <Routes>
           <Route path="/" element={
             <Login/>

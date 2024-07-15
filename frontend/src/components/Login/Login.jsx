@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { FaUserCircle } from "react-icons/fa";
+import './Login.css';
 import axios from "axios";
 
 const Login = (props) => {
@@ -36,15 +38,18 @@ const Login = (props) => {
     
 
     return(
-      <div className={'mainContainer'}>
+        <div className={'mainContainer'}>
+            <div className={"title-icon"}>
+                <FaUserCircle className={"user-icon"}/>
+            </div>
 
-          <div className={"titleContainer"}>
-              <div>
-                <h2>Login</h2>
-              </div>
-          </div>
+            <div className={"titleContainer"}>
+                <div>
+                    <h2>Login</h2>
+                </div>
+            </div>
 
-          <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
                 {/*Username*/}
                 <div className={"input-container"}>
                     <input
@@ -58,7 +63,7 @@ const Login = (props) => {
                 </div>
 
                 {/*Password*/}
-                    <div className={'input-container'}>
+                <div className={'input-container'}>
                     <input
                         type={"password"}
                         value={password}
@@ -69,7 +74,7 @@ const Login = (props) => {
                     />
                 </div>
 
-                {/*Signup button*/}
+                {/*Login button*/}
                 <div className={'input-container'}>
                     <button
                         type={"submit"}
@@ -82,21 +87,22 @@ const Login = (props) => {
                 <div>
                     <p>{tried_logging_in ? 'Error with logging in...' : ''}</p>
                 </div>
-          </form>
+            </form>
 
-          <div className={"create-option"}>
-              <p>------or create an account------</p>
-          </div>
-          <div className={'input-container'}>
-                  <button
-                      type={"button"}
-                      value={"Create an account"}
-                      onClick={navigateToSignUp}
-                      className={'inputButton'}
-                  >Create Account</button>
-          </div>
+            <div className={"create-option"}>
+                <p>------or create an account------</p>
+            </div>
+            <div className={'input-container'}>
+                <button
+                    type={"button"}
+                    value={"Create an account"}
+                    onClick={navigateToSignUp}
+                    className={'inputButton'}
+                >Create Account
+                </button>
+            </div>
 
-      </div>
+        </div>
     );
 }
 

@@ -11,21 +11,22 @@ import { Navigate } from "react-router-dom";
 
 function App() {
 
-  const [loggedInStatus, setLoggedIn] = useState("NOT_LOGGED_IN");
+  const [loggedInStatus, setLoggedIn] = useState(null);
   const [user, setUser] = useState(null);
 
   function checkLoginStatus() {
-    axios
+    const fetchLoginStatus = () => {
+      axios
       .get("http://localhost:3000/logged_in", {withCredentials: true})
       .then(res => {
         console.log('Login status checked...');
         console.log(res);
 
-        if (res.data.logged_in && loggedInStatus == "NOT_LOGGED_IN") {
+        if (res.data.logged_in && (loggedInStatus == "NOT_LOGGED_IN" || loggedInStatus == null)) {
           console.log("changed status to logged_in");
           setLoggedIn("LOGGED_IN");
           setUser(res.data.user);
-        } else if (!res.data.logged_in && loggedInStatus == "LOGGED_IN"){
+        } else if (!res.data.logged_in && (loggedInStatus == "LOGGED_IN" || loggedInStatus == null)){
           console.log("changed status to logged_out");
           setLoggedIn("NOT_LOGGED_IN");
           setUser(null);
@@ -34,7 +35,11 @@ function App() {
       .catch(e => {
         console.log("check login error", e)
       });
+    }
+
+  setTimeout(fetchLoginStatus, 1000);
   }
+
   console.log(loggedInStatus);
 
   return (

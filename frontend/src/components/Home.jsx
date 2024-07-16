@@ -81,6 +81,11 @@ const HomePage = (props) => {
                     <p>Collect/Return Card</p>
                     <span>Indicate your collection/return of gym card</span>
                 </Link>
+                <Link to="/testing" className="feature">
+                    
+                    <p>Testing</p>
+                    <span>Extra Page for dummy testing and functionality</span>
+                </Link>
             </section>
         </div>
     );

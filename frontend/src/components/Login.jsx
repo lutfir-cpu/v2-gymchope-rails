@@ -24,7 +24,7 @@ const Login = (props) => {
         ).then(response => {
             console.log(response);
             if (response.data && response.data.logged_in) {
-                setTimeout(() => navigate("home-page"), 2000);
+                setTimeout(() => navigate("homepage"), 1000);
             } else {
                 setLogIn(true);
             }

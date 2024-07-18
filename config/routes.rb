@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get 'day_slots/index'
+  get '/dayslots', to: 'day_slots#index'
+  get '/dayslots/:id', to: 'day_slots#show'
 
   resources :sessions, only: [:create, :index]
   resources :registrations, only: [:create, :index]

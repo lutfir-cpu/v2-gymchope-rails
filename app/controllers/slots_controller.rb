@@ -5,6 +5,7 @@ class SlotsController < ApplicationController
   end
 
   def show
+    @slot = Slot.find(params[:id])
     render json: @slot
   end
 end

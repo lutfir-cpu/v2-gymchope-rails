@@ -1,13 +1,17 @@
 import { BrowserRouter as Router, Route, Routes, redirect } from "react-router-dom";
 import { useState } from "react";
-import Login from './components/Login';
-import Signup from './components/Signup';
-import Home from "./components/Home";
-import Testing from "./components/Testing";
-import './App.css';
-import PrivateRoutes from "./components/PrivateRoutes";
-import axios from "axios";
 import { Navigate } from "react-router-dom";
+import axios from "axios";
+
+import Login from './components/auth_components/Login';
+import Signup from './components/auth_components/Signup';
+import Home from "./components/home_components/Home";
+import Testing from "./components/home_components/testing_page/Testing";
+import PrivateRoutes from "./components/auth_components/PrivateRoutes";
+import BookingAvailabilities from "./components/home_components/booking_page/BookingAvaliabilities";
+import DaySlots from "./components/home_components/booking_page/DaySlots";
+
+import './App.css';
 
 function App() {
 
@@ -64,9 +68,19 @@ function App() {
           } />
 
           <Route path="testing" element={
-            <PrivateRoutes checkStatus={checkLoginStatus} status={loggedInStatus}>
+            <PrivateRoutes 
+              checkStatus={checkLoginStatus} 
+              status={loggedInStatus}>
               <Testing/>
             </PrivateRoutes>
+          } />
+
+          <Route path="booking" element={
+              <BookingAvailabilities/>
+          } />
+
+          <Route path="/dayslots/:dayName" element={
+              <DaySlots/>
           } />
           
         </Routes>

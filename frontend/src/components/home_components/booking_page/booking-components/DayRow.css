@@ -1,0 +1,21 @@
+.day-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.day-row ul {
+    list-style: none;
+    padding: 0;
+}
+
+.day-row ul ul {
+    list-style: none;
+    padding: 0;
+}
+
+.buttons {
+    margin-top: 20px;
+}

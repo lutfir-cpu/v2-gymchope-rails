@@ -1,0 +1,37 @@
+/* DaySlots.css */
+.day-slots-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+  }
+  
+  .day-slots-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .day-slots-container ul {
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+    max-width: 600px;
+    color: #000000;
+  }
+  
+  .day-slot-item ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .day-slot-item button {
+    margin-top: 20px;
+    margin-left: 30px;
+  }

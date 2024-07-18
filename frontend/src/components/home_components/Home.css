@@ -4,19 +4,8 @@
     align-items: center;
     padding: 20px;
     font-family: Arial, sans-serif;
-}
-
-.dashboard-header {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.dashboard-header h1 {
-    font-size: 2rem;
-    font-weight: bold;
+    background-color: #fff;
+    color: #333;
 }
 
 .header-icons .icon {
@@ -26,8 +15,12 @@
 }
 
 .notifications-section {
+    background-color: #f0efef;
     width: 100%;
     margin-bottom: 20px;
+    text-align: left;
+    border-radius: 10px;
+    padding: 15px;
 }
 
 .notifications-section h2 {
@@ -40,6 +33,7 @@
     flex-wrap: wrap;
     justify-content: space-around;
     width: 100%;
+    margin-bottom: 20px;
 }
 
 .feature {
@@ -49,13 +43,18 @@
     width: 150px;
     margin: 10px;
     text-align: center;
-    text-decoration: none; /* Removes underline - pretty cool ngl */
-    color: inherit; /* Inherit colour from parent */
-    transition: transform 0.3s;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s, background-color 0.3s;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .feature:hover {
-    transform: scale(1.05); /* Slightly enlarge when hovering over the element */
+    transform: scale(1.05);
+    background-color: #e0e0e0;
 }
 
 .feature-icon {
@@ -72,4 +71,25 @@
 .feature span {
     font-size: 0.9rem;
     color: #555;
+}
+
+.logout-section {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+}
+
+.home buttons {
+    padding: 10px 20px;
+    background-color: #24313d;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.home buttons:hover {
+    background-color: #1a2530;
 }

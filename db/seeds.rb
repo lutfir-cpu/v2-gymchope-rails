@@ -7,3 +7,27 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+dayArr = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+
+dayArr.each do |day|
+    d = DaySlot.create!(:day => day)
+
+    gym_opens = 1000
+
+    while gym_opens <= 1600
+        Slot.create!(
+                    :day_slot_id => d.id, 
+                    :start_time => gym_opens, 
+                    :end_time => gym_opens + 30,
+                    :number_of_users => 0
+                    )
+        Slot.create!(
+                    :day_slot_id => d.id, 
+                    :start_time => gym_opens + 30, 
+                    :end_time => gym_opens + 100,
+                    :number_of_users => 0
+                    )
+        gym_opens += 100
+    end
+end

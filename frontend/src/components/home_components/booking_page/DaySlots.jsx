@@ -34,17 +34,17 @@ const DaySlots = () => {
     //end
 
     useEffect(() => {
-        // Simulate an API call
-        const fetchSlots = async () => {
-            const slots = [
-                { name: 'Event 1', slotStart: '09:00', paxPerSlot: 3 },
-                { name: 'Event 2', slotStart: '11:00', paxPerSlot: 4 },
-                { name: 'Event 3', slotStart: '12:00', paxPerSlot: 0 }
-            ];
-            setSlotArr(slots);
-        };
-
-        fetchSlots();
+        // Obtain Slots by day
+        axios
+            .post('http://localhost:3000/dayslots/slots_in_day', {day: dayName})
+            .then(response => {
+                console.log("Obtaining Slots ...", response)
+                setSlotArr(response.data)
+            })
+            .catch(error => {
+                console.log("Error obtaining slots", error)
+            })
+        
     }, []);
 
     return (
@@ -54,7 +54,7 @@ const DaySlots = () => {
                 {slotArr.map((slot, index) => (
                     <ul key={index} className="day-slot-item">
                         <div>
-                            Start: {slot.slotStart} | Users: {slot.paxPerSlot}
+                            Start: {slot.start_time} | Users: {slot.number_of_users}
                             <button onClick={handleBookSession}>Select Slot</button>
                         </div>
                     </ul>

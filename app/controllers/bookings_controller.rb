@@ -10,6 +10,9 @@ class BookingsController < ApplicationController
   
       if @booking.save
         #redirect_to bookings_path, notice: 'Booking Successfully Created'
+
+        slot_to_update = Slot.find(booking_params[:slot_id])
+        slot_to_update.update(:number_of_users => slot_to_update.users.count)
   
         render json: {
           message: 'Booking Successfully Created' ,

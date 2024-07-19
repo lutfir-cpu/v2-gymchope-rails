@@ -10,7 +10,7 @@ class DaySlotsController < ApplicationController
   end
 
   def slots_in_day
-    @day_slot = DaySlot.find_by(id: params['day_slot'][:id])
+    @day_slot = DaySlot.find_by(day: params['day'])
 
     if @day_slot
       render json: @day_slot.slots

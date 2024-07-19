@@ -3,9 +3,11 @@ Rails.application.routes.draw do
   get '/dayslots/:id', to: 'day_slots#show'
   post '/dayslots/slots_in_day', to: 'day_slots#slots_in_day'
 
+  get '/get_bookings_from_user', to: 'bookings#get_bookings_from_user'
+
   resources :sessions, only: [:create, :index]
   resources :registrations, only: [:create, :index]
-  resources :bookings, only: [:index, :show, :create]
+  resources :bookings, only: [:index, :show, :create, :destroy]
   resources :slots, only: [:index, :show]
 
   delete :logout, to: "sessions#logout"

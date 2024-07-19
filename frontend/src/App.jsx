@@ -3,6 +3,8 @@ import { useState } from "react";
 import { Navigate } from "react-router-dom";
 import axios from "axios";
 
+import './App.css';
+
 import Login from './components/auth_components/Login';
 import Signup from './components/auth_components/Signup';
 import Home from "./components/home_components/Home";
@@ -10,8 +12,7 @@ import Testing from "./components/home_components/testing_page/Testing";
 import PrivateRoutes from "./components/auth_components/PrivateRoutes";
 import BookingAvailabilities from "./components/home_components/booking_page/BookingAvaliabilities";
 import DaySlots from "./components/home_components/booking_page/DaySlots";
-
-import './App.css';
+import ManageBookings from "./components/home_components/manage_booking_page/ManageBooking";
 
 function App() {
 
@@ -81,6 +82,10 @@ function App() {
 
           <Route path="/dayslots/:dayName" element={
               <DaySlots/>
+          } />
+          
+          <Route path="manage_bookings" element={
+              <ManageBookings/>
           } />
           
         </Routes>

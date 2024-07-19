@@ -50,19 +50,19 @@ const HomePage = (props) => {
                     <p>Booking</p>
                     <span>Book a gym slot</span>
                 </Link>
-                <Link to="/manage-bookings" className="feature">
+                <Link to="/manage_bookings" className="feature">
                     <p>Manage Bookings</p>
                     <span>View and cancel gym slots</span>
                 </Link>
-                <Link to="/feedback-report" className="feature">
+                <Link to="/feedback_report" className="feature">
                     <p>Feedback/Report</p>
                     <span>Report faulty equipment / issues</span>
                 </Link>
-                <Link to="/booking-history" className="feature">
+                <Link to="/booking_history" className="feature">
                     <p>Booking History</p>
                     <span>Check your history</span>
                 </Link>
-                <Link to="/collect-return-card" className="feature">
+                <Link to="/collect_return_card" className="feature">
                     <p>Collect/Return Card</p>
                     <span>Indicate your collection/return of gym card</span>
                 </Link>

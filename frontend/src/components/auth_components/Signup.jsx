@@ -29,6 +29,10 @@ const Signup = () => {
         navigate("/");
     }
 
+    const navigateToLogin = () => {
+        navigate('/');
+    }
+
 
     return (
         <div className={'mainContainer'}>
@@ -103,9 +107,10 @@ const Signup = () => {
             <div className={'input-container'}>
                 <button
                     type={"submit"}
-                    value={"Create Account"}
+                    value={"Back To Login"}
                     className={'inputButton'}
-                >Create Admin Account
+                    onClick={navigateToLogin}
+                >Back To Login
                 </button>
             </div>
         </form>

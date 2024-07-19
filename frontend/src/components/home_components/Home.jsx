@@ -6,7 +6,9 @@ import './Home.css';
 const HomePage = (props) => {
     const navigate = useNavigate();
 
-    props.checkStatus();
+    useEffect(() => {
+        props.checkStatus();
+    }, []);
 
     const handleClick = (e) => {
         e.preventDefault();
@@ -21,6 +23,8 @@ const HomePage = (props) => {
                 console.log("reg error: ", error)
                 setLogIn(true);
             });
+        
+        props.checkStatus();
     }
 
     return (

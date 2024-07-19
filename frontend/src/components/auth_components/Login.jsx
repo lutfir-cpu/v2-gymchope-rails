@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
-import "./Login.css";
+import "./Login.css"
 
 const Login = (props) => {
     const navigate = useNavigate();
@@ -88,6 +88,7 @@ const Login = (props) => {
           <div className={"create-option"}>
               <p>------or create an account------</p>
           </div>
+          
           <div className={'input-container'}>
                   <button
                       type={"button"}

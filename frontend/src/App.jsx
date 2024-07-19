@@ -41,7 +41,7 @@ function App() {
       });
     }
 
-  setTimeout(fetchLoginStatus, 1000);
+  setTimeout(fetchLoginStatus, 500);
   }
 
   console.log(loggedInStatus);

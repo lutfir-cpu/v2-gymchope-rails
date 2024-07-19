@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:create, :index]
   resources :registrations, only: [:create, :index]
-  resources :bookings, only: [:index, :show, :create]
+  resources :bookings, only: [:index, :show, :create, :destroy]
   resources :slots, only: [:index, :show]
 
   delete :logout, to: "sessions#logout"

@@ -26,17 +26,39 @@ class BookingsController < ApplicationController
 
       render json: {
         message: 'Booking Successfully Created' ,
-        status: :created
+        status: :created,
+        booking_created: true
       }
     else
       #render :new, alert: "Booking Unsuccessful"
       render json: {
         error: 'Booking Unsuccessful' ,
         reasons: @booking.errors.full_messages,
-        status: :unprocessable_entity
+        status: :unprocessable_entity,
+        booking_created: false
       }
     end
   end
+
+  def destroy
+
+    @booking = Booking.find(params[:id])
+
+    if @booking 
+      slot_to_update = @booking.slot
+      @booking.destroy
+      slot_to_update.update(:number_of_users => slot_to_update.users.count)
+      render json: {
+        booking_deleted: true
+      }
+    else
+      render json: {
+        booking_deleted: false
+      }
+    end
+  end
+
+
 
   def get_bookings_from_user
     if @current_user

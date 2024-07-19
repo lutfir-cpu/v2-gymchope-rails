@@ -25,9 +25,13 @@ const DaySlots = () => {
                 } 
             })
             .then(response => {
-                alert('Booking Successful')
-                console.log(response.data)
-                getSlots();
+                console.log("Creating booking...", response)
+                if (response.data.booking_created) {
+                    alert('Booking Successful')
+                    getSlots();
+                } else {
+                    alert('Booking Unsuccessful' + response)
+                }
             })
             .catch(error => {
                 alert('Booking Unsuccessful')

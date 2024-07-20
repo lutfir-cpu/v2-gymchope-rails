@@ -10,6 +10,7 @@ import Testing from "./components/home_components/testing_page/Testing";
 import PrivateRoutes from "./components/auth_components/PrivateRoutes";
 import BookingAvailabilities from "./components/home_components/booking_page/BookingAvaliabilities";
 import DaySlots from "./components/home_components/booking_page/DaySlots";
+import FeedbackFrom from "./components/home_components/feedback_components/FeedbackForm";
 
 import './App.css';
 
@@ -81,6 +82,10 @@ function App() {
 
           <Route path="/dayslots/:dayName" element={
               <DaySlots/>
+          } />
+
+          <Route path="/feedback-report" element={
+              <FeedbackFrom />
           } />
           
         </Routes>

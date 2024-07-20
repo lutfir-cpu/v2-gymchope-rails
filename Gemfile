@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "3.3.4"
+ruby "3.3.3"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.3", ">= 7.1.3.4"
@@ -64,6 +64,13 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+end
+
+#For Testing Frameworks
+group :development, :test do
+  gem 'rspec-rails', '~> 5.0'
+  gem 'factory_bot_rails'
+  gem 'faker'
 end
 
 gem "rack-cors", :require => 'rack/cors'

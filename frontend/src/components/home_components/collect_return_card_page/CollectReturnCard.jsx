@@ -1,13 +1,17 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
+import './CollectReturnCard.css'
 
-const ManageBookings = () => {
+const CollectReturnCard = () => {
     const navigate = useNavigate();
     const [bookingsArr, setBookingsArr] = useState([]);
+    const [gymCardsArr, setGymCardsArr] = useState([]);
+    const [gymCard, setGymCard] = useState(null);
 
     useEffect(() => {
         getBookings();
+        getGymCards();
     }, []);
 
     const getBookings = () => {
@@ -29,8 +33,21 @@ const ManageBookings = () => {
             })
     };
 
+    const getGymCards = () => {
+        axios
+            .get('http://localhost:3000/gym_cards', {withCredentials: true})
+            .then(response => {
+                console.log("Obtaining GymCards...", response)
+                setGymCardsArr(response.data)
+            })
+            .catch(error => {
+                console.log("Error obtaining GymCards", error)
+            })
+    };
+
 
     const handleDeleteBooking = (booking) => {
+        /*
         axios
             .delete('http://localhost:3000/bookings/' + booking.id, {
                 booking: booking
@@ -46,18 +63,38 @@ const ManageBookings = () => {
                     console.log("Unknown Outcome from axios Delete Booking");
                 }
             })
+        */
     }
+
+    const handleChange = (e) => {
+        const selectedCard = gymCardsArr.find(card => card.name === e.target.value);
+        setGymCard(selectedCard);
+        console.log('changed')
+    };
 
 
     return (
-        <div className="manage-bookings-container">
-            <h2>Manage Your Bookings</h2>
+        <div className="collect-return-card-container">
+            <h2>Collect Card</h2>
+            <div>
+                <label>Please select the card you are collecting: </label>
+                <select name="GymCard" id="GymCards" onChange={handleChange}>
+                    <option value={""}>Select Gym Card</option>
+
+                    {gymCardsArr.map((gymCard, index) => (
+                        <option value={gymCard.name} key={index}>{gymCard.name}</option>    
+                    ))}
+                </select>
+            </div>
+
+            <h2>{gymCard && gymCard.name}</h2>
+
             <ul>
                 {bookingsArr.map((booking, index) => (
-                    <ul key={index} className="manage-bookings-item">
+                    <ul key={index} className="collect-return-card-item">
                         <div>
                             Day: {booking.slot.day_slot.day} | Start Time: {booking.slot.start_time}
-                            <button onClick={() => handleDeleteBooking(booking)}>Delete Booking</button>
+                            <button onClick={() => handleSelect(booking)}>Collect Card</button>
                         </div>
                     </ul>
                 ))}
@@ -69,4 +106,4 @@ const ManageBookings = () => {
     )
 }
 
-export default ManageBookings;
+export default CollectReturnCard;

@@ -13,6 +13,7 @@ import PrivateRoutes from "./components/auth_components/PrivateRoutes";
 import BookingAvailabilities from "./components/home_components/booking_page/BookingAvaliabilities";
 import DaySlots from "./components/home_components/booking_page/DaySlots";
 import ManageBookings from "./components/home_components/manage_booking_page/ManageBooking";
+import CollectReturnCard from "./components/home_components/collect_return_card_page/CollectReturnCard";
 
 function App() {
 
@@ -68,7 +69,7 @@ function App() {
             />
           } />
 
-          <Route path="testing" element={
+          <Route path="/testing" element={
             <PrivateRoutes 
               checkStatus={checkLoginStatus} 
               status={loggedInStatus}>
@@ -76,7 +77,7 @@ function App() {
             </PrivateRoutes>
           } />
 
-          <Route path="booking" element={
+          <Route path="/booking" element={
               <BookingAvailabilities/>
           } />
 
@@ -84,8 +85,12 @@ function App() {
               <DaySlots/>
           } />
           
-          <Route path="manage_bookings" element={
+          <Route path="/manage_bookings" element={
               <ManageBookings/>
+          } />
+
+          <Route path="/collect_return_card" element={
+              <CollectReturnCard/>
           } />
           
         </Routes>

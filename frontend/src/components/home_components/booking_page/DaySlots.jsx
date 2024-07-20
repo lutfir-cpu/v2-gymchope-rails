@@ -30,7 +30,7 @@ const DaySlots = () => {
                     alert('Booking Successful')
                     getSlots();
                 } else {
-                    alert('Booking Unsuccessful' + response)
+                    alert('Booking Unsuccessful')
                 }
             })
             .catch(error => {

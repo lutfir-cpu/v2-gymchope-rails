@@ -58,9 +58,9 @@ const HomePage = (props) => {
                     <p>Feedback/Report</p>
                     <span>Report faulty equipment / issues</span>
                 </Link>
-                <Link to="/booking_history" className="feature">
-                    <p>Booking History</p>
-                    <span>Check your history</span>
+                <Link to="/history" className="feature">
+                    <p>History</p>
+                    <span>Check your gym sessions and booking history</span>
                 </Link>
                 <Link to="/collect_return_card" className="feature">
                     <p>Collect/Return Card</p>

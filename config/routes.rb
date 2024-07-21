@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'feedbacks/create'
+  get 'feedbacks/index'
   get '/dayslots', to: 'day_slots#index'
   get '/dayslots/:id', to: 'day_slots#show'
   post '/dayslots/slots_in_day', to: 'day_slots#slots_in_day'
@@ -9,6 +11,7 @@ Rails.application.routes.draw do
   resources :registrations, only: [:create, :index]
   resources :bookings, only: [:index, :show, :create, :destroy]
   resources :slots, only: [:index, :show]
+  resources :feedbacks, only: [:create, :index]
 
   delete :logout, to: "sessions#logout"
   get :logged_in, to: "sessions#logged_in"

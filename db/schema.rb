@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_19_134016) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_21_075009) do
   create_table "bookings", force: :cascade do |t|
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
@@ -26,13 +26,19 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_19_134016) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "feedbacks", force: :cascade do |t|
+    t.text "feedback"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "slots", force: :cascade do |t|
     t.integer "start_time"
     t.integer "end_time"
+    t.integer "day_slot_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "number_of_users"
-    t.integer "day_slot_id"
     t.index ["day_slot_id"], name: "index_slots_on_day_slot_id"
   end
 

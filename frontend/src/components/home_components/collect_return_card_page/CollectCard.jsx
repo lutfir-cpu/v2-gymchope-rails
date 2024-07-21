@@ -53,7 +53,7 @@ const CollectCard = () => {
 
     const getGymCards = () => {
         axios
-            .get('http://localhost:3000/gym_cards', {withCredentials: true})
+            .get('http://localhost:3000/get_available_gym_cards', {withCredentials: true})
             .then(response => {
                 console.log("Obtaining GymCards...", response)
                 setGymCardsArr(response.data)
@@ -111,7 +111,9 @@ const CollectCard = () => {
             </div>
             
             <ul>
-                {bookingsArr.map((booking, index) => (
+                {bookingsArr.length == 0 
+                    ? <p>You have no bookings currently.</p>
+                    : bookingsArr.map((booking, index) => (
                     <ul key={index} className="collect-card-item">
                         <div>
                             Day: {booking.slot.day_slot.day} | Start Time: {booking.slot.start_time}

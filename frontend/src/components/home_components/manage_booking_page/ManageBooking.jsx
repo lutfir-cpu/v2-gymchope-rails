@@ -53,7 +53,9 @@ const ManageBookings = () => {
         <div className="manage-bookings-container">
             <h2>Manage Your Bookings</h2>
             <ul>
-                {bookingsArr.map((booking, index) => (
+                {bookingsArr.length == 0 
+                    ? <p>You have no bookings currently.</p>
+                    : bookingsArr.map((booking, index) => (
                     <ul key={index} className="manage-bookings-item">
                         <div>
                             Day: {booking.slot.day_slot.day} | Start Time: {booking.slot.start_time}

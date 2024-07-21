@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get :ongoing_gym_session, to: "gym_sessions#get_ongoing_gym_session"
 
   resources :gym_cards, only: [:index]
+  get :get_available_gym_cards, to: "gym_cards#get_available_gym_cards"
+
   resources :sessions, only: [:create, :index]
   resources :registrations, only: [:create, :index]
   resources :bookings, only: [:index, :show, :create, :destroy]

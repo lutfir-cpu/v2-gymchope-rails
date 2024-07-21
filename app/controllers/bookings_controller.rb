@@ -41,7 +41,6 @@ class BookingsController < ApplicationController
   end
 
   def destroy
-
     @booking = Booking.find(params[:id])
 
     if @booking 
@@ -57,8 +56,6 @@ class BookingsController < ApplicationController
       }
     end
   end
-
-
 
   def get_bookings_from_user
     if @current_user

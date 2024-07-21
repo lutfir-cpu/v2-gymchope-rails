@@ -100,7 +100,7 @@ const Signup = () => {
             </div>
 
             <div className={"create-option"}>
-                <p>-----or create an admin account-----</p>
+                <p>-----or login to your account-----</p>
             </div>
 
             {/*Signup button for admins*/}

@@ -13,6 +13,7 @@ import PrivateRoutes from "./components/auth_components/PrivateRoutes";
 import BookingAvailabilities from "./components/home_components/booking_page/BookingAvaliabilities";
 import DaySlots from "./components/home_components/booking_page/DaySlots";
 import ManageBookings from "./components/home_components/manage_booking_page/ManageBooking";
+import FeedbackForm from "./components/home_components/feedback_page/FeedbackForm.jsx";
 
 function App() {
 
@@ -86,6 +87,10 @@ function App() {
           
           <Route path="manage_bookings" element={
               <ManageBookings/>
+          } />
+
+          <Route path="/feedback-report" element={
+            <FeedbackForm/>
           } />
           
         </Routes>

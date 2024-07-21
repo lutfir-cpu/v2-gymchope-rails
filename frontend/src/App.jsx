@@ -13,7 +13,8 @@ import PrivateRoutes from "./components/auth_components/PrivateRoutes";
 import BookingAvailabilities from "./components/home_components/booking_page/BookingAvaliabilities";
 import DaySlots from "./components/home_components/booking_page/DaySlots";
 import ManageBookings from "./components/home_components/manage_booking_page/ManageBooking";
-import CollectReturnCard from "./components/home_components/collect_return_card_page/CollectReturnCard";
+import CollectCard from "./components/home_components/collect_return_card_page/CollectCard";
+import ReturnCard from "./components/home_components/collect_return_card_page/ReturnCard";
 
 function App() {
 
@@ -89,8 +90,12 @@ function App() {
               <ManageBookings/>
           } />
 
-          <Route path="/collect_return_card" element={
-              <CollectReturnCard/>
+          <Route path="/collect_card" element={
+              <CollectCard/>
+          } />
+
+          <Route path="/return_card" element={
+              <ReturnCard/>
           } />
           
         </Routes>

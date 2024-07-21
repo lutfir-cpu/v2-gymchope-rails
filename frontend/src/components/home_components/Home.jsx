@@ -62,7 +62,7 @@ const HomePage = (props) => {
                     <p>History</p>
                     <span>Check your gym sessions and booking history</span>
                 </Link>
-                <Link to="/collect_return_card" className="feature">
+                <Link to="/collect_card" className="feature">
                     <p>Collect/Return Card</p>
                     <span>Indicate your collection/return of gym card</span>
                 </Link>

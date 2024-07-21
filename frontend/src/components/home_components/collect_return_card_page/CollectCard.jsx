@@ -1,18 +1,36 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
-import './CollectReturnCard.css'
+import './CollectCard.css'
 
-const CollectReturnCard = () => {
+const CollectCard = () => {
     const navigate = useNavigate();
     const [bookingsArr, setBookingsArr] = useState([]);
     const [gymCardsArr, setGymCardsArr] = useState([]);
     const [gymCard, setGymCard] = useState(null);
 
     useEffect(() => {
+        checkOngoingSession()
         getBookings();
         getGymCards();
     }, []);
+
+    const checkOngoingSession = () => {
+        axios
+            .get('http://localhost:3000/ongoing_gym_session', {withCredentials: true})
+            .then(response => {
+                console.log("Obtaining Ongoing Gym Sessions", response)
+                if (response.data) {
+                    navigate('/return_card');
+                } else if (response.data == null) {
+                } else {
+                    console.log("Unknown Outcome from axios get_ongoing_sessions")
+                }
+            })
+            .catch(error => {
+                console.log("Error obtaining gym sessions", error)
+            })
+    }
 
     const getBookings = () => {
         axios
@@ -39,6 +57,9 @@ const CollectReturnCard = () => {
             .then(response => {
                 console.log("Obtaining GymCards...", response)
                 setGymCardsArr(response.data)
+                if (response.data != 0) {
+                    setGymCard(response.data[0]);
+                }
             })
             .catch(error => {
                 console.log("Error obtaining GymCards", error)
@@ -46,24 +67,25 @@ const CollectReturnCard = () => {
     };
 
 
-    const handleDeleteBooking = (booking) => {
-        /*
+    const handleSubmit = (booking) => {
         axios
-            .delete('http://localhost:3000/bookings/' + booking.id, {
-                booking: booking
+            .post('http://localhost:3000/gym_sessions', {
+                booking: booking,
+                gym_card: gymCard
             })
             .then(response => {
-                console.log("Deleting Booking...", response)
-                if (response.data.booking_deleted) {
-                    console.log("Booking Deleted Successfully");
-                    getBookings();
-                } else if (response.data.booking_deleted == false) {
-                    console.log('Unsuccessful Booking Delete');
+                console.log("Creating Gym Session...", response)
+                if (response.data.gym_session_created) {
+                    alert('Card Collect Successful')
+                    checkOngoingSession();
                 } else {
-                    console.log("Unknown Outcome from axios Delete Booking");
+                    alert('Card Collect Unsuccessful')
                 }
             })
-        */
+            .catch(error => {
+                alert('Card Collect Unsuccessful')
+                console.log("Error", error)
+            })
     }
 
     const handleChange = (e) => {
@@ -74,27 +96,26 @@ const CollectReturnCard = () => {
 
 
     return (
-        <div className="collect-return-card-container">
+        <div className="collect-card-container">
             <h2>Collect Card</h2>
             <div>
                 <label>Please select the card you are collecting: </label>
-                <select name="GymCard" id="GymCards" onChange={handleChange}>
-                    <option value={""}>Select Gym Card</option>
-
-                    {gymCardsArr.map((gymCard, index) => (
+                <select name="GymCard" id="GymCards" defaultValue={gymCardsArr != 0 ? gymCardsArr[0].name : ""} onChange={handleChange}>
+                    {gymCardsArr.length == 0 
+                        ? <option value={""} key={-1}>No Available Cards</option>
+                        : gymCardsArr.map((gymCard, index) => (
                         <option value={gymCard.name} key={index}>{gymCard.name}</option>    
-                    ))}
+                    ))
+                    }
                 </select>
             </div>
-
-            <h2>{gymCard && gymCard.name}</h2>
-
+            
             <ul>
                 {bookingsArr.map((booking, index) => (
-                    <ul key={index} className="collect-return-card-item">
+                    <ul key={index} className="collect-card-item">
                         <div>
                             Day: {booking.slot.day_slot.day} | Start Time: {booking.slot.start_time}
-                            <button onClick={() => handleSelect(booking)}>Collect Card</button>
+                            {gymCardsArr.length != 0 ? <button onClick={() => handleSubmit(booking)}>Collect Card</button> : <button>Error</button>}
                         </div>
                     </ul>
                 ))}
@@ -106,4 +127,4 @@ const CollectReturnCard = () => {
     )
 }
 
-export default CollectReturnCard;
+export default CollectCard;

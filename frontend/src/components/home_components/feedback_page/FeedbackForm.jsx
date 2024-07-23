@@ -17,7 +17,7 @@ const FeedbackForm = () => {
                 { headers: { 'Content-Type': 'application/json' } }
             );
             console.log(response.data);
-            setResponseMessage("feedback")
+            setResponseMessage("Feedback Submitted Successfully!")
             setSubmitted(true);
 
         } catch (error) {
@@ -43,8 +43,10 @@ const FeedbackForm = () => {
         <div className="feedback-container">
             <form onSubmit={handleSubmit}>
                 <label htmlFor="feedback">Feedback</label>
-                <textarea id="feedback" value={feedback} onChange={(e) => setFeedback(e.target.value)} />
-                <button type="submit">Submit</button>
+                <textarea id="feedback" value={feedback}
+                          onChange={(e) => setFeedback(e.target.value)}
+                          placeholder="Please write your feedback before submitting!"/>
+                <button type="submit" disabled={!feedback.trim()}>Submit</button>
             </form>
         </div>
     );

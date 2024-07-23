@@ -32,6 +32,26 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_21_075009) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "gym_cards", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "gym_sessions", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "slot_id", null: false
+    t.integer "gym_card_id", null: false
+    t.time "collect_time"
+    t.time "return_time"
+    t.string "status", default: "ongoing"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["gym_card_id"], name: "index_gym_sessions_on_gym_card_id"
+    t.index ["slot_id"], name: "index_gym_sessions_on_slot_id"
+    t.index ["user_id"], name: "index_gym_sessions_on_user_id"
+  end
+
   create_table "slots", force: :cascade do |t|
     t.integer "start_time"
     t.integer "end_time"
@@ -52,5 +72,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_21_075009) do
 
   add_foreign_key "bookings", "slots"
   add_foreign_key "bookings", "users"
+  add_foreign_key "gym_sessions", "gym_cards"
+  add_foreign_key "gym_sessions", "slots"
+  add_foreign_key "gym_sessions", "users"
   add_foreign_key "slots", "day_slots"
 end

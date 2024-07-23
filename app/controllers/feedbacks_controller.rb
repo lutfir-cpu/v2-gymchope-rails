@@ -5,7 +5,7 @@ class FeedbacksController < ApplicationController
       render json: { status: 'Success', message: @feedback }, status: :created
     else
       render json: { status: 'error', message: @feedback.errors.full_messages.join(", ") },
-             status: :unprocessable_entity
+             status: 201
     end
   end
 

@@ -7,5 +7,6 @@ class User < ApplicationRecord
     validates :password, presence: true
 
     has_many :bookings, dependent: :destroy
+    has_many :gym_sessions, dependent: :destroy
     has_many :slots, :through => :bookings
 end

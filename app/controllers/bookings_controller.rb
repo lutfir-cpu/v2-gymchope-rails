@@ -52,7 +52,7 @@ class BookingsController < ApplicationController
         booking_deleted: false
       }
     end
-    
+
   rescue ActiveRecord::RecordNotFound
     render json: {
       error: 'Booking not found',

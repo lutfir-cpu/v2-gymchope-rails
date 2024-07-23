@@ -16,11 +16,11 @@ class RegistrationsController < ApplicationController
       render json: {
         status: :created,
         user: user
-      }
+      }, status: :created
     else
       render json: {
-        status: 200
-      }
+        status: 'error', message: user.errors.full_messages.join(", ")
+      }, status: :unprocessable_entity
     end
   end
 end

@@ -19,7 +19,7 @@ RSpec.describe BookingsController, type: :controller do
           post :create, params: { booking: { slot_id: slot.id, user_id: user.id } }
         }.to change(Booking, :count).by(1)
 
-        expect(response).to have_http_status(:ok)
+        expect(response).to have_http_status(200)
         expect(JSON.parse(response.body)["message"]).to eq("Booking Successfully Created")
       end
     end

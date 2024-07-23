@@ -29,14 +29,14 @@ class GymSessionsController < ApplicationController
         message: 'Gym Session Successfully Created' ,
         status: :created,
         gym_session_created: true
-      }
+      }, status: :created
     else
       render json: {
         error: 'Gym Session Unsuccessful' ,
         reasons: @gym_session.errors.full_messages,
         status: :unprocessable_entity,
         gym_session_created: false
-      }
+      }, status: :unprocessable_entity
     end
   end
 
@@ -47,21 +47,21 @@ class GymSessionsController < ApplicationController
         ongoing_gym_session: @gym_session,
         status: :ok,
         updated: true
-    }
+    }, status: :ok
     else
       render json: {
         errors: @gym_session.errors,
         updated: false
-    }
+    }, status: :unprocessable_entity
     end
   end
 
   def get_ongoing_gym_session
     @ongoing_gym_session = @current_user.gym_sessions.find_by(status: 'ongoing')
     if @ongoing_gym_session
-      render json: @ongoing_gym_session, include: [:gym_card]
+      render json: @ongoing_gym_session, include: [:gym_card], status: :ok
     else
-      render json: @ongoing_gym_session
+      render json: @ongoing_gym_session, status: :no_content
     end
   end
 end

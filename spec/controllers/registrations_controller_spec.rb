@@ -17,16 +17,16 @@ RSpec.describe RegistrationsController, type: :controller do
       it 'creates a new user and returns a successful response' do
         post :create, params: { user: { email: 'test@example.com', password: 'password', first_name: 'Test' } },
              format: :json
-        expect(response).to have_http_status(:ok)
+        expect(response).to have_http_status(201)
         expect(JSON.parse(response.body)['user']['email']).to eq('test@example.com')
       end
     end
 
     context 'with invalid attributes' do
       it 'returns an error' do
-        post :create, params: { user: { email: nil, password: 'password', first_name: 'Test' } },
+        post :create, params: { user: { email: "", password: 'password', first_name: 'Test' } },
              format: :json
-        expect(response).to have_http_status(200)
+        expect(response).to have_http_status(422)
       end
     end
   end

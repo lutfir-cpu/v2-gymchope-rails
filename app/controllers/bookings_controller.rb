@@ -1,7 +1,7 @@
 class BookingsController < ApplicationController
   include CurrentUserConcern
   protect_from_forgery with: :null_session, only: [:create]
-  #Trying to connect to frontend
+
   def new
     @booking = Booking.new
   end
@@ -19,20 +19,17 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
 
     if @booking.save
-      #redirect_to bookings_path, notice: 'Booking Successfully Created'
-
       slot_to_update = Slot.find(booking_params[:slot_id])
-      slot_to_update.update(:number_of_users => slot_to_update.users.count)
+      slot_to_update.update(number_of_users: slot_to_update.users.count)
 
       render json: {
-        message: 'Booking Successfully Created' ,
+        message: 'Booking Successfully Created',
         status: :created,
         booking_created: true
       }
     else
-      #render :new, alert: "Booking Unsuccessful"
       render json: {
-        error: 'Booking Unsuccessful' ,
+        error: 'Booking Unsuccessful',
         reasons: @booking.errors.full_messages,
         status: :unprocessable_entity,
         booking_created: false
@@ -43,10 +40,10 @@ class BookingsController < ApplicationController
   def destroy
     @booking = Booking.find(params[:id])
 
-    if @booking 
+    if @booking
       slot_to_update = @booking.slot
       @booking.destroy
-      slot_to_update.update(:number_of_users => slot_to_update.users.count)
+      slot_to_update.update(number_of_users: slot_to_update.users.count)
       render json: {
         booking_deleted: true
       }
@@ -55,6 +52,12 @@ class BookingsController < ApplicationController
         booking_deleted: false
       }
     end
+    
+  rescue ActiveRecord::RecordNotFound
+    render json: {
+      error: 'Booking not found',
+      booking_deleted: false
+    }, status: :not_found
   end
 
   def get_bookings_from_user
@@ -72,6 +75,8 @@ class BookingsController < ApplicationController
       }
     end
   end
+
+  private
 
   def booking_params
     params.require(:booking).permit(:slot_id, :user_id)

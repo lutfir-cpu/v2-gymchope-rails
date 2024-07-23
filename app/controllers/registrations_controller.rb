@@ -5,13 +5,13 @@ class RegistrationsController < ApplicationController
   end
 
   def create
-    user = User.create!(
+    user = User.new(
       email: params['user']['email'],
       password: params['user']['password'],
       first_name: params['user']['first_name']
     )
 
-    if user 
+    if user.save
       session[:user_id] = user.id
       render json: {
         status: :created,
@@ -19,7 +19,7 @@ class RegistrationsController < ApplicationController
       }
     else
       render json: {
-        status: 500
+        status: 200
       }
     end
   end

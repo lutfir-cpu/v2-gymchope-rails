@@ -25,11 +25,12 @@ class SessionsController < ApplicationController
         status: :created,
         logged_in: true,
         user: user
-      }
+      }, status: :created
     else
       render json: {
-        status: 401
-      }
+        status: 401,
+        message: "Invalid credentials"
+      }, status: :unauthorized
     end
   end
 

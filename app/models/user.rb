@@ -4,6 +4,8 @@ class User < ApplicationRecord
     validates_presence_of :email
     validates_uniqueness_of :email
 
+    validates :password, presence: true
+
     has_many :bookings, dependent: :destroy
     has_many :slots, :through => :bookings
 end

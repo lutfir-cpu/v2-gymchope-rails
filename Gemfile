@@ -67,6 +67,3 @@ group :test do
 end
 
 gem "rack-cors", :require => 'rack/cors'
-
-#deployment
-gem 'pg'

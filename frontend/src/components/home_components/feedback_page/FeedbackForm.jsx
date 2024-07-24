@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import axios from 'axios';
 import './FeedbackForm.css';
+import { useNavigate } from 'react-router-dom';
 
 
 const FeedbackForm = () => {
     const [feedback, setFeedback] = useState("");
     const [submitted, setSubmitted] = useState(false);
     const [responseMessage, setResponseMessage] = useState('');
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -46,6 +48,9 @@ const FeedbackForm = () => {
                 <textarea id="feedback" value={feedback} onChange={(e) => setFeedback(e.target.value)} />
                 <button type="submit">Submit</button>
             </form>
+            <div className="buttons">
+                <button onClick={() => navigate('/homepage')}>Back to Homepage</button>
+            </div>
         </div>
     );
 }

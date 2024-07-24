@@ -90,7 +90,7 @@ function App() {
                         <ManageBookings/>
                     } />
 
-                    <Route path="/feedback-report" element={
+                    <Route path="/feedback_report" element={
                         <FeedbackForm/>
                     } />
 

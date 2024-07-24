@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :history, only: [:index]
+  post '/get_histories_by_user', to: 'history#get_histories_by_user'
 
   get 'feedbacks/create'
   get 'feedbacks/index'

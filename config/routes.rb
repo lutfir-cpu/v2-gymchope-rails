@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+  resources :history, only: [:index]
+
   get 'feedbacks/create'
   get 'feedbacks/index'
+
   get '/dayslots', to: 'day_slots#index'
   get '/dayslots/:id', to: 'day_slots#show'
   post '/dayslots/slots_in_day', to: 'day_slots#slots_in_day'

@@ -26,14 +26,14 @@ class BookingsController < ApplicationController
         message: 'Booking Successfully Created',
         status: :created,
         booking_created: true
-      }
+      }, status: :created
     else
       render json: {
         error: 'Booking Unsuccessful',
         reasons: @booking.errors.full_messages,
         status: :unprocessable_entity,
         booking_created: false
-      }
+      }, status: :unprocessable_entity
     end
   end
 
@@ -66,13 +66,13 @@ class BookingsController < ApplicationController
       render json: {
         bookings: @bookings_from_user.as_json(include: { slot: { include: :day_slot } }),
         logged_in: true
-      }
+      }, status: :ok
     else
       render json: {
         logged_in: false,
         bookings: [],
         errors: ['Not Logged In']
-      }
+      }, status: :unprocessable_entity
     end
   end
 

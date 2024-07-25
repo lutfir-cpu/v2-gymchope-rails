@@ -19,7 +19,7 @@ RSpec.describe BookingsController, type: :controller do
           post :create, params: { booking: { slot_id: slot.id, user_id: user.id } }
         }.to change(Booking, :count).by(1)
 
-        expect(response).to have_http_status(200)
+        expect(response).to have_http_status(201)
         expect(JSON.parse(response.body)["message"]).to eq("Booking Successfully Created")
       end
     end
@@ -30,7 +30,7 @@ RSpec.describe BookingsController, type: :controller do
           post :create, params: { booking: { slot_id: nil, user_id: user.id } }
         }.to_not change(Booking, :count)
 
-        expect(response).to have_http_status(200)
+        expect(response).to have_http_status(422)
         expect(JSON.parse(response.body)["error"]).to eq("Booking Unsuccessful")
       end
     end
@@ -65,7 +65,7 @@ RSpec.describe BookingsController, type: :controller do
       it 'returns user bookings' do
         get :get_bookings_from_user
 
-        expect(response).to have_http_status(:ok)
+        expect(response).to have_http_status(200)
         expect(JSON.parse(response.body)['logged_in']).to be true
         expect(JSON.parse(response.body)['bookings'].length).to eq(1)
       end
@@ -80,7 +80,7 @@ RSpec.describe BookingsController, type: :controller do
       it 'returns an error' do
         get :get_bookings_from_user
 
-        expect(response).to have_http_status(:ok)
+        expect(response).to have_http_status(422)
         expect(JSON.parse(response.body)['logged_in']).to be false
         expect(JSON.parse(response.body)['errors']).to include('Not Logged In')
       end

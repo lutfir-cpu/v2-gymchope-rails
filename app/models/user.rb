@@ -5,6 +5,7 @@ class User < ApplicationRecord
     validates_uniqueness_of :email
 
     has_many :bookings, dependent: :destroy
+    has_many :histories, dependent: :destroy
     has_many :gym_sessions, dependent: :destroy
     has_many :slots, :through => :bookings
 end

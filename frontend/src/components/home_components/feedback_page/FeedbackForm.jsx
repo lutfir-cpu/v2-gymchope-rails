@@ -37,6 +37,10 @@ const FeedbackForm = () => {
                 <button className="submit-another" onClick={() => setSubmitted(false)}>
                     Submit More Feedback
                 </button>
+                
+                <div className="buttons">
+                    <button onClick={() => navigate('/homepage')}>Back to Homepage</button>
+                </div>
             </div>
         );
     }

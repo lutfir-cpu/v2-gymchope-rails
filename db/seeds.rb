@@ -9,6 +9,7 @@
 #   end
 
 dayArr = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+gymCardArr = ["Gym Card 1 (GC1)", "Gym Card 2 (GC2)", "Gym Card 3 (GC3)"]
 
 dayArr.each do |day|
     d = DaySlot.create!(:day => day)
@@ -30,4 +31,8 @@ dayArr.each do |day|
                     )
         gym_opens += 100
     end
+end
+
+gymCardArr.each do |card|
+    GymCard.create!(name: card)
 end

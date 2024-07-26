@@ -15,6 +15,7 @@ import ManageBookings from "./components/home_components/manage_booking_page/Man
 import FeedbackForm from "./components/home_components/feedback_page/FeedbackForm.jsx";
 import CollectCard from "./components/home_components/collect_return_card_page/CollectCard";
 import ReturnCard from "./components/home_components/collect_return_card_page/ReturnCard";
+import History from "./components/home_components/history_page/History.jsx";
 
 function App() {
 
@@ -101,6 +102,11 @@ function App() {
                     <Route path="/return_card" element={
                         <ReturnCard/>
                     } />
+
+                    <Route path="/history" element={
+                        <History/>
+                    } />
+
 
                 </Routes>
             </div>

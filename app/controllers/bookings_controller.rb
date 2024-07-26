@@ -24,6 +24,11 @@ class BookingsController < ApplicationController
       slot_to_update = Slot.find(booking_params[:slot_id])
       slot_to_update.update(:number_of_users => slot_to_update.users.count)
 
+      History.create!(
+        user_id: @booking.user_id,
+        log_message: "Booking at " + slot_to_update.day_slot.day + " from " + slot_to_update.start_time.to_s + " to " + slot_to_update.end_time.to_s + " successful!"
+      )
+
       render json: {
         message: 'Booking Successfully Created' ,
         status: :created,
@@ -44,9 +49,16 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
 
     if @booking 
+
       slot_to_update = @booking.slot
       @booking.destroy
       slot_to_update.update(:number_of_users => slot_to_update.users.count)
+
+      History.create!(
+        user_id: @booking.user_id,
+        log_message: "Booking at " + slot_to_update.day_slot.day + " from " + slot_to_update.start_time.to_s + " to " + slot_to_update.end_time.to_s + " removed successfuly."
+      )
+
       render json: {
         booking_deleted: true
       }

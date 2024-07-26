@@ -49,7 +49,7 @@ const History = () => {
                 {logArr.map((log, index) => (
                     <ul key={index} className="log-item">
                         <div>
-                            Time: {log.created_at} | Users: {log.log_message}
+                            Time: {log.created_at} | {log.log_message}
                         </div>
                     </ul>
                 ))}

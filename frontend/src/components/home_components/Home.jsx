@@ -1,29 +1,67 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import axios from "axios";
 import './Home.css';
 
 const HomePage = (props) => {
     const navigate = useNavigate();
+    const [user, setUser] = useState(null);
+    const [notificationsArr, setNotificationsArr] = useState([]);
 
     useEffect(() => {
         props.checkStatus();
+        obtainUserData();
     }, []);
+
+    const obtainUserData = () => { 
+        axios.get('http://localhost:3000/logged_in', {withCredentials: true} )
+            .then(response => {
+                console.log('Obtaining User', response)
+                if (response.data.logged_in) {
+                    setUser(response.data.user);
+                    getNotifications(response.data.user);
+                } else if (response.data.logged_in == false) {
+                    alert('You are currently not logged in. Please login to continue.')
+                } else {
+                    console.log("Unknown Outcome from axios logged_in")
+                }
+            })
+            .catch(error => {
+                console.log("Error Obtaining User Data", error)
+            })
+    }
+
+    const getNotifications = (user) => {
+        axios
+        .post('http://localhost:3000/get_histories_by_user', {user})
+        .then(response => {
+            console.log("Obtaining Notifications ...", response)
+            const tempArr = response.data.length > 3 ? [...response.data].slice(0,3) : [...response.data]
+            setNotificationsArr(tempArr)
+            console.log(tempArr)
+        })
+        .catch(error => {
+            console.log("Error obtaining logs", error)
+        })
+    };
 
     const handleClick = (e) => {
         e.preventDefault();
+        deleteSession();
+    }
 
+    const deleteSession = () => {
         axios
-            .delete("http://localhost:3000/logout", { withCredentials: true })
-            .then(response => {
-                console.log("logging out", response);
-                navigate("/");
-            })
-            .catch(error => {
-                console.log("reg error: ", error)
-                setLogIn(true);
-            });
-        
+        .delete("http://localhost:3000/logout", { withCredentials: true })
+        .then(response => {
+            console.log("logging out", response);
+            navigate("/");
+        })
+        .catch(error => {
+            console.log("reg error: ", error)
+            setLogIn(true);
+        });
+
         props.checkStatus();
     }
 
@@ -33,9 +71,13 @@ const HomePage = (props) => {
                 <h2>Notifications</h2>
                 <table className="notifications-table">
                     <tbody>
-                        <tr>
-                            <td>No notifications available.</td>
-                        </tr>
+                        {notificationsArr.map((notification, index) => (
+                            <tr key={index} className="log-item">
+                                <td>
+                                Time: {notification.created_at} | {notification.log_message}
+                                </td>
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
             </section>

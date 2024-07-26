@@ -47,3 +47,4 @@ You will need the following pre-installed locally on your computer:
  Step 1: Change directory to gymchope-rails
 
  Step 2: Type `code .` on your terminal.
+

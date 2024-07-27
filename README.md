@@ -73,7 +73,7 @@ You will need the following pre-installed locally on your computer:
     ```sh
     npm run dev
     ```
-   Navigate to 'http://localhost:5174' in another tab in your browser to access the website.
+   Navigate to 'http://localhost:5173' in another tab in your browser to access the website.
 
 ## Editing the Project
 

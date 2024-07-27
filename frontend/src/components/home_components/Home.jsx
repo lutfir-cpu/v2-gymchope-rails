@@ -22,6 +22,7 @@ const HomePage = (props) => {
                     getNotifications(response.data.user);
                 } else if (response.data.logged_in == false) {
                     alert('You are currently not logged in. Please login to continue.')
+                    navigate('/');
                 } else {
                     console.log("Unknown Outcome from axios logged_in")
                 }

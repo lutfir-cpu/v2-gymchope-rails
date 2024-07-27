@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_21_075009) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_24_095935) do
   create_table "bookings", force: :cascade do |t|
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
@@ -52,6 +52,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_21_075009) do
     t.index ["user_id"], name: "index_gym_sessions_on_user_id"
   end
 
+  create_table "histories", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.text "log_message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_histories_on_user_id"
+  end
+
   create_table "slots", force: :cascade do |t|
     t.integer "start_time"
     t.integer "end_time"
@@ -75,5 +83,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_21_075009) do
   add_foreign_key "gym_sessions", "gym_cards"
   add_foreign_key "gym_sessions", "slots"
   add_foreign_key "gym_sessions", "users"
+  add_foreign_key "histories", "users"
   add_foreign_key "slots", "day_slots"
 end

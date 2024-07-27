@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import axios from 'axios';
 import './FeedbackForm.css';
+import { useNavigate } from 'react-router-dom';
 
 
 const FeedbackForm = () => {
     const [feedback, setFeedback] = useState("");
     const [submitted, setSubmitted] = useState(false);
     const [responseMessage, setResponseMessage] = useState('');
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -35,6 +37,10 @@ const FeedbackForm = () => {
                 <button className="submit-another" onClick={() => setSubmitted(false)}>
                     Submit More Feedback
                 </button>
+                
+                <div className="buttons">
+                    <button onClick={() => navigate('/homepage')}>Back to Homepage</button>
+                </div>
             </div>
         );
     }
@@ -48,6 +54,9 @@ const FeedbackForm = () => {
                           placeholder="Please write your feedback before submitting!"/>
                 <button type="submit" disabled={!feedback.trim()}>Submit</button>
             </form>
+            <div className="buttons">
+                <button onClick={() => navigate('/homepage')}>Back to Homepage</button>
+            </div>
         </div>
     );
 }

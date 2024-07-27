@@ -2,7 +2,10 @@
 const Testing = () => {
 
     return (
-        <h1>TEST TEST TEST</h1>
+        <div>
+            <p>Created by Lutfir and Yashvan.</p>
+            <p>Thank you to our advisor, Javier, and the Orbital'24 team for supporting us.</p>
+        </div>
     )
 }
 

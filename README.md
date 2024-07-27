@@ -1,49 +1,88 @@
-# Setting Up GymChope
+# GymChope Setup Guide
+
+## Prerequisites
 
 You will need the following pre-installed locally on your computer:
-- Ruby
+- Ruby (>= 3.3.4)
 - Rails
-- node.js
+- Node.js (>= v20.10.0)
 
- ## node.js installation
- Step 1: Download and setup node.js from https://nodejs.org/en/download/package-manager (node.js >= v20.10.0)
+## Node.js Installation
 
- Step 2: Check that you have node.js installed, in your terminal type
- `node -v`
+1. Download and set up Node.js from [Node.js Downloads](https://nodejs.org/en/download/package-manager).
 
- ## Ruby installation
- Step 1: Download Ruby from rubyinstaller.org [Ruby+Devkit 3.3.X (x64) version] (Ruby >= 3.3.4)
+2. Check that you have Node.js installed. In your terminal, type:
+    ```sh
+    node -v
+    ```
 
- Step 2: Check that you have ruby installed, in your terminal type
- `ruby -v`
+## Ruby Installation
 
- ## Rails installation
+1. Download Ruby from [RubyInstaller](https://rubyinstaller.org) [Ruby+Devkit 3.3.X (x64) version].
 
- Step 1: To install Rails, you can type the following in your terminal
- `gem install rails`
+2. Check that you have Ruby installed. In your terminal, type:
+    ```sh
+    ruby -v
+    ```
 
- Step 2: Check that you have ruby installed, in your terminal type
- `rails -v`
+## Rails Installation
 
- ## Running the Website
+1. To install Rails, type the following in your terminal:
+    ```sh
+    gem install rails
+    ```
 
- Step 1: Download all files from github
+2. Check that you have Rails installed. In your terminal, type:
+    ```sh
+    rails -v
+    ```
 
- Step 2: On your terminal, change your directory to gymchope-rails
- `cd v2-gymchope-rails`
+## Running the Website
 
- Step 3: Run `bundle install` `rails db:seed` and `rails db:migrate` to install dependencies, create and populate the database.
+1. Download all files from GitHub.
 
- Step 4: Run `rails s` to start backend server, and on your browser, navigate to 'http://localhost:3000' to check if it is set up properly. It should return a 'Beckend is online...' value.
+2. On your terminal, change your directory to the project directory:
+    ```sh
+    cd v2-gymchope-rails
+    ```
 
- Step 5: On another tab of the terminal, change your directory to gymchope-rails/frontend via `cd frontend`
+3. Run the following commands to install dependencies, create, and populate the database:
+    ```sh
+    bundle install
+    rails db:seed
+    rails db:migrate
+    ```
 
- Step 6: Install npm dependencies, `npm install axios`
+4. Start the backend server. In your terminal, type:
+    ```sh
+    rails s
+    ```
+   Then, navigate to 'http://localhost:3000' in your browser to check if it is set up properly. It should return a 'Backend is online...' value.
 
- Step 7: Finally, run `npm run dev` to start the frontend server. Navigate to 'http://localhost:5174' on another tab in your browser to access the website.
+5. Open another tab in the terminal and change your directory to the frontend:
+    ```sh
+    cd frontend
+    ```
 
- ## To edit
+6. Install npm dependencies. In your terminal, type:
+    ```sh
+    npm install axios
+    ```
 
- Step 1: Change directory to v2-gymchope-rails
+7. Start the frontend server. In your terminal, type:
+    ```sh
+    npm run dev
+    ```
+   Navigate to 'http://localhost:5174' in another tab in your browser to access the website.
 
- Step 2: Type `code .` on your terminal.
+## Editing the Project
+
+1. Change the directory to the project directory:
+    ```sh
+    cd v2-gymchope-rails
+    ```
+
+2. Open the project in your code editor. In your terminal, type:
+    ```sh
+    code .
+    ```

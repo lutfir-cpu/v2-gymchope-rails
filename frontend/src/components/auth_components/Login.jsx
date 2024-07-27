@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import { FaUser } from 'react-icons/fa';
 import "./Login.css"
 
 const Login = (props) => {
@@ -40,13 +41,13 @@ const Login = (props) => {
       <div className={'mainContainer'}>
 
           <div className={"titleContainer"}>
-              <div>
-                <h2>Login</h2>
+              <div className={"title-icon"}>
+                  <FaUser className="user-icon"/>
               </div>
           </div>
 
           <form onSubmit={handleSubmit}>
-                {/*Username*/}
+          {/*Username*/}
                 <div className={"input-container"}>
                     <input
                         type={"email"}

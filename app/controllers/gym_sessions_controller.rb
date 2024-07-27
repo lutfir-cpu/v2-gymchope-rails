@@ -25,11 +25,6 @@ class GymSessionsController < ApplicationController
       booking.destroy
       slot_to_update.update(:number_of_users => slot_to_update.users.count)
 
-      History.create!(
-        user_id: booking.user_id,
-        log_message: "Card " + @gym_session.gym_card.name + " collected for booking at " + slot_to_update.day_slot.day + " from " + slot_to_update.start_time.to_s + " to " + slot_to_update.end_time.to_s + "."
-      )
-
       render json: {
         message: 'Gym Session Successfully Created' ,
         status: :created,
@@ -48,10 +43,6 @@ class GymSessionsController < ApplicationController
   def update
     @gym_session = GymSession.find(params[:id])
     if @gym_session.update(status: params['status'])
-      History.create!(
-        user_id: @gym_session.user_id,
-        log_message: "Card " + @gym_session.gym_card.name + " returned! Thanks for gymming with us!"
-      )
       render json: {
         ongoing_gym_session: @gym_session,
         status: :ok,

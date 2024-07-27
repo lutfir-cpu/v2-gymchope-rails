@@ -3,19 +3,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 90vh;
+    height: 70vh;
     background-color: #ffffff;
-}
-
-.title-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center; /* Center the icon horizontally */
-    margin-bottom: 10px;
-}
-
-.user-icon {
-    font-size: 165px; /* Adjust the size as needed 165 - 200 works best*/
 }
 
 .titleContainer {
@@ -31,15 +20,6 @@
     max-width: 400px;
     display: flex;
     flex-direction: column;
-}
-
-.input-container-medium {
-    margin-bottom: 15px;
-    width: 100%;
-    max-width: 400px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 .input-box {
@@ -67,32 +47,19 @@
     transition: background-color 0.3s;
 }
 
-.inputButtonForgot {
-    padding: 5px;
-    font-size: 0.9rem;
-    color: black;
-    background-color: #d3d3d3;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    text-align: center;
-}
-
-.inputButtonForgot:hover {
-    background-color: #b0b0b0;
-}
-
-.inputButtonForgot:active {
-    background-color: #808080;
-}
-
 .inputButton:hover {
     background-color: #0056b3;
 }
 
 .inputButton:active {
     background-color: #004085;
+}
+
+.create-option {
+    margin: 20px 0;
+    font-size: 1rem;
+    color: #333;
+    text-align: center;
 }
 
 .validation-msg {

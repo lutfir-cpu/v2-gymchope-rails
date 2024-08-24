@@ -86,3 +86,9 @@ You will need the following pre-installed locally on your computer:
     ```sh
     code .
     ```
+
+
+
+## Authors
+
+    Made by Lutfir and Yashvan.

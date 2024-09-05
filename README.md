@@ -93,5 +93,6 @@ You will need the following pre-installed locally on your computer:
 
     Made by Lutfir and Yashvan.
 
-## Check Out Our README
+## Check out the Project's README
+
 [README](https://docs.google.com/document/d/1KVYnrmgYXj26wk-noyJOIAHwGzqdWxrUDQOvOSWGA-c/edit?usp=sharing)
